@@ -16,7 +16,7 @@ for i in range(A, B+1):
             elif j == i-1 :
                 array.append(i)
 
-for k in array:
-    print(k)
+for l in array:
+    print(l)
 
 
