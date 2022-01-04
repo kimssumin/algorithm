@@ -1,3 +1,5 @@
+#구간합 구하기
+
 import sys
 N, M = map(int, sys.stdin.readline().split())
 num = list(map(int, sys.stdin.readline().split()))
