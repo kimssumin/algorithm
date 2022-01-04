@@ -1,3 +1,5 @@
+#1차원 배열
+
 T = int(input())
 for i in range(T):  
     f = int(input())  

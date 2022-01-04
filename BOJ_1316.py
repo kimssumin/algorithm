@@ -1,3 +1,5 @@
+#문자열
+
 N = int(input())
 result = N
 

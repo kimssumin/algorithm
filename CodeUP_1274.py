@@ -1,6 +1,6 @@
-import math
+#소수판별
 
-#p = 0
+import math
 
 A = int(input())
 
