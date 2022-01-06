@@ -13,9 +13,9 @@ for _ in range (N):
         stack.append(num)
     elif do.startswith("pop"):
         if len(stack) == 0:
-        print(-1)
+            print(-1)
         else :
-        print(stack.pop())
+            print(stack.pop())
     elif do.startswith("size"):
         print(len(stack))
     elif do.startswith("empty"):
