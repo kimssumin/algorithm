@@ -13,4 +13,4 @@ for _ in range(N):
 
 nes = sorted(array, key = lambda x:x[1])
 for array in nes:
-    print(array[0])
+    print(array[0]) 
