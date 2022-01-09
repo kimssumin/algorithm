@@ -1,3 +1,5 @@
+#정렬
+
 import sys
 
 N = int(input())
