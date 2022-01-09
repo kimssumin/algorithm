@@ -2,6 +2,7 @@
 #위에서 아래로
 
 N = int(input())
+
 array = []
 
 for _ in range(N):
