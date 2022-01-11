@@ -1,3 +1,6 @@
+#두 배열의 원소교체
+#원소의 합이 최대로(A)
+
 N, K = map(int, input().split())
 a  = list(map(int, input().split()))
 b = list(map(int, input().split()))

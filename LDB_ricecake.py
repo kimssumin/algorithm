@@ -1,6 +1,6 @@
 #이진탐색
 #떡볶이 떡 만들기
-#parametric search - 원하는 조건을 만족하는 가장 알맞은 값을 찾는 문제 -> 이진탐색을 이용하여 해결
+#parametric search - 원하는 조건을 만족하는 가장 알맞은 값을 찾는 문제 -> 보통 이진탐색을 이용하여 해결
 
 n, m = list(map(int, input().split()))
 array = list(map(int, input().split()))
