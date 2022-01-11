@@ -1,5 +1,5 @@
 #이진탐색
-#시간복잡도 O(logN)
+#시간복잡도 : O(logN)
 
 def binary_search(array, target, start, end):
     if start > end:
