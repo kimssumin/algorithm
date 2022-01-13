@@ -1,4 +1,5 @@
 #최단거리 - 다익스트라 알고리즘
+#linear_path_ver.
 
 import sys
 n, m = map(int, input().split())
