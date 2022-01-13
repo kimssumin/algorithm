@@ -1,5 +1,5 @@
 #heap을 이용한 다익스트라 알고리즘
-#
+#시간복잡도 O(NlogN)
 
 import heapq
 import sys
