@@ -1,4 +1,4 @@
-#신장트리- 크루스칼 알고리즘
+#신장트리 - 크루스칼 알고리즘
 
 def find_parent(parent, x):
     if parent[x] != x :
