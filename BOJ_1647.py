@@ -28,7 +28,7 @@ parent = [0] * (n+1)
 for i in range(1, n+1):
     parent[i] = i
 graph.sort()
-selected = [] #크루스칼 알고리즘
+selected = [] # 크루스칼 알고리즘
 result = 0
 
 for c, a , b in graph:
