@@ -1,3 +1,6 @@
+#graph, tree
+#모든 국가가 연결되어있어서 N-1만 필요
+
 import sys
 input = sys.stdin.readline
 
