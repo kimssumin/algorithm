@@ -10,7 +10,7 @@ for i in range(0, n+1):
 print(dp[n][k] % 1000000000)
 
 
-# 아래는 메모리 초과된 ...
+# 아래는 메모리 초과된 ... code...
 # import itertools
 
 # n, k = map(int, input().split())
