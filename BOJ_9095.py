@@ -1,4 +1,5 @@
 #DP
+#brute force
 
 T = int(input())
 def sums(n):
