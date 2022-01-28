@@ -1,4 +1,5 @@
 #암호만들기 using combinations
+#brute force
 
 import sys
 import itertools
