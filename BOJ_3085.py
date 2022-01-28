@@ -1,3 +1,6 @@
+#brute force
+#사탕게임
+
 import sys
 
 N = int(sys.stdin.readline())
