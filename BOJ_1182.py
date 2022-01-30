@@ -1,7 +1,6 @@
 #부분수열의 합
 #brute force 
 
-n, s = map(int, input().split())
 from itertools import combinations as com
 
 n, s = map(int, input().split())
