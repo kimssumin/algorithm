@@ -1,3 +1,4 @@
+#graph
 #BFS, DFS
 
 # Depth First Search
@@ -10,12 +11,12 @@ def dfs(n):
 
 # Breadth First Search
 def bfs(n):
-    visited[n] = True
-    queue = deque([n])
-    while queue:
+    queue = deque([n]) #deque([start])
+    visited[n] = True #현재노드 방문처리
+    while queue: #큐가 빌때까지 반복
         v = queue.popleft()
-        print(v, end= ' ')
-        for i in graph[v]:
+        print(v, end= ' ') #큐에서 하나의 원소를 뽑아 출력
+        for i in graph[v]: #해당원소와 연결된 , 아직 방문하지 않은 원소들을 큐에 삽입
             if not visited[i]:
                 queue.append(i)
                 visited[i] = True
@@ -33,11 +34,13 @@ for _ in range(m):
     a, b = map(int, sys.stdin.readline().split())
     graph[a].append(b)
     graph[b].append(a)
+
 # sort adjacency list
 for i in range(1, n+1):
     graph[i].sort()
 
 dfs(v)
+
 # initialize check list
 visited = [False] * (n + 1)
 print()
