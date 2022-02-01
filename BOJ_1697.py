@@ -1,7 +1,7 @@
 #숨바꼭질
 #BFS
+#graph
 
-# 1697번 : 숨바꼭질
 from collections import deque
 
 def bfs():
