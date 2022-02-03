@@ -7,7 +7,7 @@ N = int(input())
 words = []
 input = sys.stdin.readline
 for _ in range(N):
-    words.append(input())
+    words.append(input().strip())
 alphabet = [0 for i in range(26)]
 
 for wr in words:
