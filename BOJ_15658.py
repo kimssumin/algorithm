@@ -12,6 +12,7 @@ def solve(index, ans, add, sub, mul, div) :
         mx = max(mx, ans)
         mn = min(mn, ans)
         return
+        
     if add > 0 :
         solve(index+1, ans+a[index], add-1, sub, mul, div)
     if sub > 0 :
