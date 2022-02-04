@@ -1,5 +1,6 @@
 #두 동전
 #brute force
+#bfs
 
 import sys
 from collections import deque
