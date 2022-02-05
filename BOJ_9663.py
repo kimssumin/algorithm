@@ -2,6 +2,7 @@
 #brute force
 #dfs
 
+#python 으로 통과 X -> Pypy3
 import sys
 sys.setrecursionlimit(100000)
 
