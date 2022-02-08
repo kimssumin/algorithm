@@ -1,4 +1,5 @@
-#그리디알고리즘 - ATM
+#ATM
+#greedy
 
 import sys
 
