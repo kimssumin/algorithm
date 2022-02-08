@@ -9,7 +9,7 @@ dis = []
 
 n = int(input())
 for _ in range(n):
-    dis.apppend(list(map(int, input().split())))
+    dis.append(list(map(int, input().split())))
 
 dis.sort(key = lambda x:(x[1], x[0])) #끝나는 시간이 빠른 순
 cnt = 1
