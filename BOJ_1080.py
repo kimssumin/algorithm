@@ -12,9 +12,9 @@ b = []
 cnt = 0
 
 for _ in range(n) :
-    a.append(list(input().strip()))
+    a.append(list(map(int,input().strip())))
 for _ in range(n):
-    b.append(list(input().strip()))
+    b.append(list(map(int,input().strip())))
 
 def reverse(x,y):
     for i in range(x, x+3):
