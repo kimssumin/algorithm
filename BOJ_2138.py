@@ -30,12 +30,12 @@ for i in range(2):
         if j == 0:
             if i == 0 and A != answer:
                 cnt += 1
-                two_flip(j, j+1)
+                two_flip(j, j+1) #두개 뒤집기
 
         elif 1 <= j <= n-2:
             if A[j-1] != answer[j-1]:
                 cnt += 1
-                three_flip(j-1, j, j+1)
+                three_flip(j-1, j, j+1) #3개 뒤집기
 
         elif j == n-1:
             if A[j-1] != answer[j-1]:
