@@ -19,5 +19,6 @@ def dfs(start):
             dfs(i)
             cnt +=1
 
+
 dfs(1)
 print(cnt)
