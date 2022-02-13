@@ -20,7 +20,7 @@ result = 0
 temp = [] #현재 gem의 무게보다 작은 보석들
 
 for i in c:
-    while gem and c >= gem[0][0]:
+    while gem and i >= gem[0][0]:
         heapq.heappush(temp, -gem[0][1]) #max heap
         #무게를 제외한 값만 heappush 하여 넣어줌 (최대힙)
         heapq.heappop(gem)
