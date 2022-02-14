@@ -12,7 +12,7 @@ count = []
 
 def binary(n, N, start, end):
     if start > end:
-        retur
+        re
     mid = (start+ end)//2
     if n == N[mid]:
         return N[start:end+1].count(n)
