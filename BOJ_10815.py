@@ -23,6 +23,6 @@ def binary(array, target, start, end):
 
 for i in range(m):
     if binary(cards, check[i], 0, n-1) is not None:
-        print(1, end = '')
+        print(1, end = ' ')
     else:
-        print(0, end = '')
+        print(0, end = ' ')
