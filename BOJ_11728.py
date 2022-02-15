@@ -1,5 +1,4 @@
-#배열 합치기
-#search
+#배열 합치기 
 
 import sys
 
