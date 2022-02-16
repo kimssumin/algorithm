@@ -9,4 +9,5 @@ for _ in range(n):
     maps.append(list(map(int, input().split())))
 
 maps.sort()
-print(" ".join(map(str, maps)))
+for i in maps:
+    print(" ".join(map(str, i)))
