@@ -1,5 +1,6 @@
-#brute force
 #일곱난쟁이
+#brute force
+
 
 import sys
 
