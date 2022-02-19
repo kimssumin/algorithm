@@ -1,6 +1,7 @@
 #국영수
 #sort (key, lambda)
 
+
 import sys
 n = int(sys.stdin.readline()) 
 table = [list(sys.stdin.readline().split()) for _ in range(n)] 
