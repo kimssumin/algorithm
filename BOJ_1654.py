@@ -1,6 +1,7 @@
 #랜선자르기
 #Binary search
 
+
 import sys
 K, N = map(int, input().split())
 lan = [int(sys.stdin.readline()) for _ in range(K)]
