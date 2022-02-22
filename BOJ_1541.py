@@ -1,6 +1,7 @@
 #잃어버린 괄호
 #greedy
 
+
 import sys
 
 input = sys.stdin.readline 
