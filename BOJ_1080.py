@@ -2,6 +2,7 @@
 #행렬
 #greedy
 
+
 import sys
 
 input = sys.stdin.readline
