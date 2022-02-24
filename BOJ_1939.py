@@ -29,7 +29,7 @@ def bfs(c):
                 queue.append(x)
     return True if end in visited else False
 
-result = mi
+result = 0
 while mi <= ma:
     mid = (mi+ma) //2
     if bfs(mid):
