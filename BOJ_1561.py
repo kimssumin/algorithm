@@ -28,9 +28,8 @@ else:
         
         #t에 탑승한 아이를 계산
         for i in range(m):
-            if t % time[i] == 0:
+            if t % time[i] == 0: #t 시간에 탑승한 아이
                 cnt += 1
             if cnt == n:
                 print(i+1)
                 break
-            
