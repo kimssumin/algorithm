@@ -21,6 +21,7 @@ for i in range(r):
                 if 0 <= nx < r and 0 <= ny < c and farm[nx][ny] == "S":
                     sign = True
                     break
+                
         elif farm[i][j] == "S": #양일 경우
             continue
 
