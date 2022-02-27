@@ -20,4 +20,4 @@ while e-s > 0.000001:
         s = m
     else:
         e = m
-print(res)
+print('%.03f'%res)
