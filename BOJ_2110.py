@@ -1,7 +1,6 @@
 #공유기 설치
 #binary search
 
-from multiprocessing.connection import answer_challenge
 import sys
 input = sys.stdin.readline
 
@@ -27,13 +26,13 @@ def binary_search(home, start, end):
         if cnt >= c :
             global answer
             start = mid + 1
-            answer = mid
+            answer.append(mid)
         else:
             end = mid - 1
 
 start = 1
 end = home[-1] - home[0]
-answer = 0
+answer = []
 
 binary_search(home, start, end)
-print(answer)
+print(max(answer))
