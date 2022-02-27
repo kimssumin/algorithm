@@ -3,7 +3,7 @@
 
 import sys
 input = sys.stdin.readline 
-x, y, c = map(int, input().split())
+x, y, c = map(float, input().split())
 
 def cal(x, y, w):
     h1 = (x**2-w**2)**0.5
