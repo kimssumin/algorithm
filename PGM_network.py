@@ -22,6 +22,7 @@ def BFS(n, computers, com, visited):
                 if visited[connect] == False:
                     queue.append(connect)
 
+#dfs 풀이
 '''
 def solution(n, computers):
     answer = 0
