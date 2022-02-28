@@ -9,11 +9,11 @@ def solution(answers):
     li3 = [3,3,1,1,2,2,4,4,5,5] * 1000
     
     for v1,v2, v3, res in zip(li1, li2, li3, answers):
-        if v1 == ans:
+        if v1 == res:
             cnt1 += 1
-        if v2 == ans:
+        if v2 == res:
             cnt2 += 1
-        if v3 == ans:
+        if v3 == res:
             cnt3 += 1
             
     tmp = [cnt1, cnt2, cnt3]
