@@ -1,6 +1,7 @@
 #RGB거리 
 #dp
 
+
 n = int(input())
 p = []
 for _ in range(n):
