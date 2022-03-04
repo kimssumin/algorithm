@@ -1,22 +1,13 @@
-# 더 맵게
-# 힙
-
-import heapq
-from telnetlib import KERMIT
+from heapq import *
 
 
 def solution(scoville, K):
-    heap = []
-    for num in scoville:
-        heapq.heappush(heap, num)
-    mix_cnt = 0
-    while heap[0] < K:
-        try:
-            heapq.heappush(heap, heapq.heappop(
-                heap) + (heapq.heappop(heap) * 2))
-        except IndexError:
-            return -1
-        mix_cnt += 1
+    count = 0
+    heapify(scoville)  # 리스트를 힙으로
 
-    answer = 0
-    return answer
+    while scoville[0] < K and len(scoville) > 1:
+        num1 = heappop(scoville)
+        num2 = heappop(scoville)
+        heappush(scoville, num1 + num2 * 2)
+        count += 1
+    return count if scoville[0] >= K else -1
