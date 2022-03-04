@@ -2,14 +2,15 @@
 # 힙
 
 import heapq
+from telnetlib import KERMIT
 
 
 def solution(scoville, K):
     heap = []
-    for num in scovile:
+    for num in scoville:
         heapq.heappush(heap, num)
     mix_cnt = 0
-    while heap[0] < k:
+    while heap[0] < K:
         try:
             heapq.heappush(heap, heapq.heappop(
                 heap) + (heapq.heappop(heap) * 2))
