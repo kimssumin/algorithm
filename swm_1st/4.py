@@ -18,4 +18,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-# 칼로리
+# 칼로리 식단 구조
