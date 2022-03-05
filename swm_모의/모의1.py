@@ -1,10 +1,10 @@
-#괄호수 맞추는 문제
+# 괄호수 맞추는 문제
 
 def main():
     b = list(input())
     all = len(b)
     b.sort()
-    
+
     for i in range(1, len(b)):
         if b[i] == ')':
             cnt = i
@@ -19,5 +19,6 @@ def main():
             x = 'NO'
         print(x)
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()
