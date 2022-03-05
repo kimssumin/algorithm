@@ -1,5 +1,6 @@
 # 괄호수 맞추는 문제
 
+
 def main():
     b = list(input())
     all = len(b)
