@@ -13,4 +13,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-#삼분값
+# 삼분값 산출
