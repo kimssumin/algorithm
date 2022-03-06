@@ -22,8 +22,10 @@ label {
 }
 
 #black {
-  display : block;
-  background-color : black ;
-  width : 100px;
-  height : 100px;
+  display: block;
+  background-color: black;
+  width: 100px;
+  height: 100px;
 }
+
+#색깔 선택시 바뀌는;
