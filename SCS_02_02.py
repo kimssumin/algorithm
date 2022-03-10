@@ -42,6 +42,7 @@ class MaxStack:  # Max값을 찾기위한 클래스 정의
 S = MaxStack()  # 정의한 클래스 불러오기
 
 while 1:  # exit 입력이 들어오기 전까지 반복
+
     do = input()
     if do.startswith('push'):  # push 입력이 들어왔을 때
         x = int(do.split()[1])  # 공백 기준 오른쪽에 위치한 value인 정수를 넣어
