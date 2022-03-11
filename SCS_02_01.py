@@ -1,6 +1,7 @@
 # 스택 2개로 큐 구현하기
 # dequeue, enqueue 연산 모두 시간복잡도 O(1)로 해야함
 
+# 스택 2 개 이용해서 push, pop, push, pop 해도 됨
 
 class myQueue:  # 스택을 이용하여 큐 클래스를 정의 (스택은 리스트를 이용함)
     def __init__(self):
