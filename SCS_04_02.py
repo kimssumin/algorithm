@@ -1,5 +1,5 @@
 # 시장선거
-# 과반수 시장 당선자 후보자 번호 출력, 없다면 -1
+# 과반수 시장 당선자 후보자 번호 출력, 없다면 -1 출력
 
 import sys
 input = sys.stdin.readline
