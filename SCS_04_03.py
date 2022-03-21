@@ -1,125 +1,46 @@
 # 두 여왕
 # 체스보드에 놓을 수 있는 방법의 수
+# bruteforce, back tracking
+# 시간복잡도 : O(n^3) 로 추정됨
+
 n = int(input())
 
-ans = 0
+ans = 0  # 최종정답 변수
 
 
-def is_promising(x):
-    if x == 0:
+def checking(x):  # 대각선과 상하좌우 검사하는 함수
+    if x == 0:  # 첫번째 행은 일단 통과 시킴 (어떻게든 하나의 기준점은 잡히기 때문이다)
         return True
-    for i in range(x):
+    for i in range(x):  # O(x) 의 시간복잡도
+        # 연산은 모두 O(1)의 시간이고
         if row[x] == row[i] or abs(row[x] - row[i]) == abs(x - i):
-            return False
+            # row[x] == row[i] 는 같은 열에 또 존재하는지를 체크하는 것이며, abs 식은 왼쪽 위 대각선과 오른쪽 위 대각선에 Q가 있는지 검사하는 것이다
+            return False  # 있으면 두면 안되므로 False
 
-    return True
-
-
-def n_queens(x):
-    global ans
-    if x == 2*i + (a * 1):
-        # print(row)
-        ans += 1
-
-    else:
-        for j in range(n):
-            # [x, i]에 퀸을 놓겠다.
-            row[x] = j
-            if is_promising(x):
-                n_queens(x+i)  # 2)
+    return True  # 검사를 통과하면 True
 
 
-for a in range(0, n-1):
-    for i in range(1, n-a):
+def n_queens(x):  # 경우의 수를 찾는 함수
+    global ans  # ans 전역변수 설정
+    if x == 2*i + (a * 1):  # Q가 두번 놓이면
+        ans += 1  # 경우의 수 (최종정답) + 1 (시간복잡도 O(1))
+
+    else:  # 아니면 for 문을 반복하는데
+        for j in range(n):  # 행에서 오른쪽으로 이동하면서
+            row[x] = j  # [x, j]에 Q를 놓겠다는 의미이다
+            if checking(x):  # 상하좌우, 대각선을 검사하고 통과한다면
+                # x , 즉 다음 줄(이 때 다음줄은 x+i로 설정하여 n행까지 checking 하도록하였다)로 넘어갈 수 있다. (재귀함수 이용)
+                n_queens(x+i)
+
+
+for a in range(0, n-1):  # a는 row 배열에서 start 위치이고,
+    for i in range(1, n-a):  # i 는 row 배열에서 end 위치이다.
+        # 이 이중 for 문은 O(n^2) 의 시간이 소요된다
+        # Q가 들어가는 index 를 저장하는 배열로 1차원 배열로 시간복잡도를 절약했으며, row[i] = j 이면 [i, j]위치에 Q가 저장되어있음을 나타낸다
         row = [100] * n
+        # 초기값을 100으로 설정한 이유는, 테스트케이스 검사를 할 때 배열에 0으로 값이 들어가는 것과 구분하기 위함
+        # a, 즉 0번째 행부터 시작하여 n-2행 까지 반복한다 (index 상 n-2 가 가장 마지막 경우의 수이기 떄문)
         n_queens(a)
-# for i in range(2, n):
-# row = [100] * n
-# n_queens(2)
 
 
-print(ans)
-'''
-n = int(input())
-
-ans = 0
-row = [0] * n
-visited = [False for _ in range(n)]
-
-
-def is_promising(x):
-    for i in range(x):
-        if row[x] == row[i] or abs(row[x] - row[i]) == abs(x - i):
-            return False
-
-    return True
-
-
-def n_queens(x):
-    #nt = 0
-    global ans
-    if x == n:
-        ans += 1
-
-    elif x >= 2 and x != n:
-        print(row)
-        ans += 1
-        row[x-1] = 0
-        for i in range(n):
-            if visited[i]:
-              continue
-            row[x] = i
-            if is_promising(x):
-                visited[i] = True
-                n_queens(0)
-
-    else:
-        for i in range(n):
-            # [x, i]에 퀸을 놓겠다.
-            if visited[i]:
-              continue
-            row[x] = i
-            if is_promising(x):
-                visited[i] = True
-                n_queens(x+1)
-                visited[i] = False
-                #cnt += 1
-
-
-n_queens(0)
-print(ans)
-'''
-'''
-from collections import deque
-import sys
-input = sys.stdin.readline
-
-
-def dfs():
-    dx = [-1, -2, -2, -1, 1, 2, 2, 1]  # 체스 말 움직임1
-    dy = [-2, -1, 1, 2, 2, 1, -1, -2]  # 체스 말 움직임2
-    chess = [[0] * n for _ in range(n)]
-    cnt = 0
-    #endX , endY = n-1, n-1
-
-    for i in range(n):
-        for j in range(n):
-            startX = i, startY = j
-            queue = deque([[startX, startY]])
-    # if startX == endX and startY == endY:  # 시작과 종점이 같을 때 예외처리
-    #     return cnt
-            while queue:  # 종료조건and not chess[endX][endY]
-                x, y = queue.popleft()
-                for a, b in zip(dx, dy):  # zip 을 사용하면 더 빠르게 수행할 수 있다고 한다
-                    nx = x + a
-                    ny = y + b
-                    if 0 <= nx < n and 0 <= ny < n-j:
-                        # if not chess[nx][ny]:
-                        cnt += 1
-                        queue.append([nx, ny])
-    return cnt
-
-
-n = int(input())
-print(dfs())
-'''
+print(ans)  # 최종 정답을 출력한다
