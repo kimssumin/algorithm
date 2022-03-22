@@ -69,12 +69,12 @@ for _ in range(n):  # 정수 입력을 받음
 num.sort()
 cnt = 0
 for i in com(num, 3):
-  a = int(list(i)[0])
-  b = int(list(i)[1])
-  c = int(list(i)[2])
-  if c - b <= 2*(b-a):
-            if 2*b - a <= c:
-              cnt += 1
-              print(a,b,c)
+    a = int(list(i)[0])
+    b = int(list(i)[1])
+    c = int(list(i)[2])
+    if c - b <= 2*(b-a):
+        if 2*b - a <= c:
+            cnt += 1
+            print(a,b,c)
 print(cnt)
 '''
