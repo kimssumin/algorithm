@@ -53,3 +53,28 @@ for j in range(n-1, 1, -1):  # c 값의 변화 for 문 (가장 끝 인덱스값�
                     cnt += 1  # 조건을 만족하면 cnt += 1
 
 print(cnt)
+
+
+'''
+Time out 되지만 확인할 수 있는 코드
+from itertools import combinations as com
+import sys
+n = int(input())
+num = []
+
+input = sys.stdin.readline
+
+for _ in range(n):  # 정수 입력을 받음
+    num.append(int(input()))  # O(n)
+num.sort()
+cnt = 0
+for i in com(num, 3):
+  a = int(list(i)[0])
+  b = int(list(i)[1])
+  c = int(list(i)[2])
+  if c - b <= 2*(b-a):
+            if 2*b - a <= c:
+              cnt += 1
+              print(a,b,c)
+print(cnt)
+'''
