@@ -36,18 +36,26 @@ for j in range(n-1, 1, -1):
         setting(i, start)
 
         # if checking:  # 조건을 만족하면
-        if c - b <= 2*(b-a):
-            if 2*b - a <= c:
-                cnt += 1  # a가 더 작아지는 경우는 모두 통과
-                ans.append([a, b, c])
+        if checking(a, b, c):
+            cnt += 1  # a가 더 작아지는 경우는 모두 통과
+            ans.append([a, b, c])
+            while start > 0:  # checking == False and
+                start -= 1
+                setting(i, start)
+                if checking(a, b, c):
+                    cnt += 1
+                    ans.append([a, b, c])
+                    # break
+
         else:  # 조건을 만족하지 않으면
             while start > 0:  # checking == False and
                 start -= 1
                 setting(i, start)
-                if checking:
+                if checking(a, b, c):
                     cnt += 1
                     ans.append([a, b, c])
                     break
+
 
 print(cnt)
 print(sorted(ans))
