@@ -10,6 +10,7 @@ for _ in range(n):  # 정수 입력을 받음
 num.sort()
 
 cnt = 0
+ans = []
 
 
 def setting(i, start):
@@ -20,7 +21,7 @@ def setting(i, start):
 
 
 def checking(a, b, c):
-    if 2*b - a <= c <= 3*b - 2*a:
+    if (2*b - a) <= c and c <= ((3*b) - (2*a)):
         return True
     else:
         return False
@@ -30,21 +31,26 @@ for j in range(n-1, 1, -1):
     end = j
     c_n = end
     c = num[c_n]
-    for i in range(n-2, 0, -1):
+    for i in range(j-1, 0, -1):
         start = i-1
         setting(i, start)
 
-        if checking:  # 조건을 만족하면
-            cnt += start + 1  # a가 더 작아지는 경우는 모두 통과
+        # if checking:  # 조건을 만족하면
+        if c - b <= 2*(b-a):
+            if 2*b - a <= c:
+                cnt += 1  # a가 더 작아지는 경우는 모두 통과
+                ans.append([a, b, c])
         else:  # 조건을 만족하지 않으면
-            while checking == False and start >= 0:
+            while start > 0:  # checking == False and
                 start -= 1
                 setting(i, start)
                 if checking:
-                    cnt += start + 1
+                    cnt += 1
+                    ans.append([a, b, c])
                     break
 
 print(cnt)
+print(sorted(ans))
 
 # while start < i and start < end:
 #     a = num[start]
