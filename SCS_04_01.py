@@ -54,17 +54,8 @@ for j in range(n-1, 1, -1):
                 if checking(a, b, c):
                     cnt += 1
                     ans.append([a, b, c])
-                    break
+                    # break
 
 
 print(cnt)
 print(sorted(ans))
-
-# while start < i and start < end:
-#     a = num[start]
-#     li = 3*b - 2*a
-#     c_n = i+1
-#     c = num[c_n]
-#     while li < c:
-#         c_n += 1
-#         c = num[c_n]
