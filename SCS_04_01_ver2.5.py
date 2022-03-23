@@ -1,3 +1,5 @@
+# ver2.와 차이는 combination이용 but 여전히 time out
+
 #(딩, 동, 댕)
 # n개의 서로 다른 정수값들 중 a,b,c 세 값이 두 조건을 만족하는 쌍의 개수 구하기
 # a<b<c && b-a <= c-b <= 2*(b-a)
