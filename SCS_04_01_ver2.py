@@ -39,17 +39,17 @@ for i in range(0, n-2):  # a index 의 변화(가장 큰 index는 n-3까지다) 
             #check.append([1, cnt])
         # a index 하나 뒤의 원소는 조건을 만족하지 않는데 c의 index 하나 밑의 원소는 조건을 만족하면
         elif num[a_index+1] < x and num[c_index-1] <= y:
-            if num[n//2] < x:
-                k = (n // 2) + 1
-                while num[k] < x:
+            if num[n//2] < x:  # 이분탐색을 활용해 중점 값 보다도 시작점이 크면
+                k = (n // 2) + 1  # 시작점 자체를 중점값 다음 index 로 옮김
+                while num[k] < x:  # 이를 통해 불필요한 반복을 줄일수있음
                     k += 1
                 cnt += c_index-k  # 위와 마찬가지로 구간 길이를 연산해 cnt 에 합 (O(1))
-            elif num[n//2] == x:
-                k = (n // 2)
+            elif num[n//2] == x:  # 시작점이 중점값과 같다면
+                k = (n // 2)  # 그 점이 시작점이 됨
                 cnt += c_index-k  # 위와 마찬가지로 구간 길이를 연산해 cnt 에 합 (O(1))
             else:
                 k = 0
-                # b index 첫값을 하나씩 증가시켜 조건을 만족하기 시작하는 수를 찾고 (최악의 경우 O(n-3)까지 시간복잡도)
+                # b index 첫값을 하나씩 증가시켜 조건을 만족하기 시작하는 수를 찾고 (최악의 경우 O(n/2-3)까지 시간복잡도)
                 while num[a_index+1+k] < x:
                     k += 1
                 # 위와 마찬가지로 구간 길이를 연산해 cnt 에 합 (O(1))
@@ -58,17 +58,17 @@ for i in range(0, n-2):  # a index 의 변화(가장 큰 index는 n-3까지다) 
 
         # a index 하나 뒤의 원소는 조건을 만족하는데 c의 index 하나 밑의 원소는 조건을 만족하지않는다면
         elif num[a_index+1] >= x and num[c_index-1] > y:
-            if num[n//2] > y:
-                k = (n // 2) - 1
-                while num[k] > y:
+            if num[n//2] > y:  # 이분탐색을 활용해 중점값보다도 끝값이 작다면
+                k = (n // 2) - 1  # 끝점 자체를 중점값 하나 아래 index 로 옮김
+                while num[k] > y:  # 이를 통해 불필요한 반복을 줄일수있음
                     k -= 1
                 cnt += k - a_index
-            elif num[n//2] == y:
-                k = (n//2)
+            elif num[n//2] == y:  # 이분탐색을 활용해 중점값이 끝값이라면
+                k = (n//2)  # 끝값이 중점값이 됨
                 cnt += k - a_index
             else:
                 k = 0
-                # b index 끝값을 하나씩 감소시켜 조건을 만족하기 시작하는 수를 찾고 (최악의 경우 O(n-3)까지 시간복잡도)
+                # b index 끝값을 하나씩 감소시켜 조건을 만족하기 시작하는 수를 찾고 (최악의 경우 O(n/2-3)까지 시간복잡도)
                 while num[c_index-1-k] > y:
                     k += 1
                 # 위와 마찬가지로 구간 길이를 연산해 cnt 에 합 (O(1))
@@ -84,13 +84,13 @@ for i in range(0, n-2):  # a index 의 변화(가장 큰 index는 n-3까지다) 
                 cnt += c_index-a_index-1-k-k
                 #check.append([4, cnt])
             elif num[a_index+1+k] < x and num[c_index-1-k] <= y:
-                if num[n // 2] < x:
-                    l = (n // 2) + 1
+                if num[n // 2] < x:  # 이분탐색을 활용해 중점 값 보다도 시작점이 크면
+                    l = (n // 2) + 1  # 시작점 자체를 중점값 다음 index 로 옮김
                     while num[l] < x:
                         l += 1
                     cnt += c_index-l-k  # 위와 마찬가지로 구간 길이를 연산해 cnt 에 합 (O(1))
-                elif num[n//2] == x:
-                    l = (n // 2)
+                elif num[n//2] == x:  # 시작점이 중점값과 같다면
+                    l = (n // 2)  # 그 점이 시작점이 됨
                     cnt += c_index - l-k
                 else:
                     l = 0
@@ -99,13 +99,13 @@ for i in range(0, n-2):  # a index 의 변화(가장 큰 index는 n-3까지다) 
                     cnt += c_index-k-k-a_index-l-1
                 #check.append([5, cnt])
             elif num[a_index+1+k] >= x and num[c_index-1-k] > y:
-                if num[n // 2] > y:
-                    l = (n // 2) - 1
+                if num[n // 2] > y:  # 이분탐색을 활용해 중점값보다도 끝값이 작다면
+                    l = (n // 2) - 1  # 끝점 자체를 중점값 하나 아래 index 로 옮김
                     while num[l] > y:
                         l -= 1
                     cnt += l - a_index - k
-                elif num[n//2] == y:
-                    l = (n // 2)
+                elif num[n//2] == y:  # 이분탐색을 활용해 중점값이 끝값이라면
+                    l = (n // 2)  # 끝값이 중점값이 됨
                     cnt += l - a_index - k
                 else:
                     l = 0
