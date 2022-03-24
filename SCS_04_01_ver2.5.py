@@ -44,40 +44,79 @@ for i in com(nl, 2):
             #check.append([1, cnt])
         # a index 하나 뒤의 원소는 조건을 만족하지 않는데 c의 index 하나 밑의 원소는 조건을 만족하면
         elif num[a_index+1] < x and num[c_index-1] <= y:
-            k = 0
-            # b index 첫값을 하나씩 증가시켜 조건을 만족하기 시작하는 수를 찾고 (최악의 경우 O(n-3)까지 시간복잡도)
-            while num[a_index+1+k] < x:
-                k += 1
-            cnt += c_index-a_index-k-1  # 위와 마찬가지로 구간 길이를 연산해 cnt 에 합 (O(1))
-            #check.append([2, cnt])
+            if num[n//2] < x:
+                k = (n // 2) + 1
+                while num[k] < x:
+                    k += 1
+                cnt += c_index-k  # 위와 마찬가지로 구간 길이를 연산해 cnt 에 합 (O(1))
+            elif num[n//2] == x:
+                k = (n // 2)
+                cnt += c_index-k  # 위와 마찬가지로 구간 길이를 연산해 cnt 에 합 (O(1))
+            else:
+                k = 0
+                # b index 첫값을 하나씩 증가시켜 조건을 만족하기 시작하는 수를 찾고 (최악의 경우 O(n-3)까지 시간복잡도)
+                while num[a_index+1+k] < x:
+                    k += 1
+                # 위와 마찬가지로 구간 길이를 연산해 cnt 에 합 (O(1))
+                cnt += c_index-a_index-k-1
+                #check.append([2, cnt])
 
         # a index 하나 뒤의 원소는 조건을 만족하는데 c의 index 하나 밑의 원소는 조건을 만족하지않는다면
         elif num[a_index+1] >= x and num[c_index-1] > y:
-            k = 0
-            # b index 끝값을 하나씩 감소시켜 조건을 만족하기 시작하는 수를 찾고 (최악의 경우 O(n-3)까지 시간복잡도)
-            while num[c_index-1-k] > y:
-                k += 1
-            cnt += c_index-k-a_index-1  # 위와 마찬가지로 구간 길이를 연산해 cnt 에 합 (O(1))
+            if num[n//2] > y:
+                k = (n // 2) - 1
+                while num[k] > y:
+                    k -= 1
+                cnt += k - a_index
+            elif num[n//2] == y:
+                k = (n//2)
+                cnt += k - a_index
+            else:
+                k = 0
+                # b index 끝값을 하나씩 감소시켜 조건을 만족하기 시작하는 수를 찾고 (최악의 경우 O(n-3)까지 시간복잡도)
+                while num[c_index-1-k] > y:
+                    k += 1
+                # 위와 마찬가지로 구간 길이를 연산해 cnt 에 합 (O(1))
+                cnt += c_index-k-a_index-1
             #check.append([3, cnt])
         else:  # 두 원소 다 만족하지 않는다면
             k = 0
             # 일단 하나라도 만족할 때까지 감소 (최악의 경우 O(n/2) 까지 시간복잡도)
             while num[a_index+1+k] < x and num[c_index-1-k] > y:
                 k += 1
+
             if num[a_index+1+k] >= x and num[c_index-1-k] <= y:  # 다시 위의 과정을 반복
                 cnt += c_index-a_index-1-k-k
                 #check.append([4, cnt])
             elif num[a_index+1+k] < x and num[c_index-1-k] <= y:
-                l = 0
-                while num[a_index+1+k+l] < x:
-                    l += 1
-                cnt += c_index-k-k-a_index-l-1
+                if num[n // 2] < x:
+                    l = (n // 2) + 1
+                    while num[l] < x:
+                        l += 1
+                    cnt += c_index-l-k  # 위와 마찬가지로 구간 길이를 연산해 cnt 에 합 (O(1))
+                elif num[n//2] == x:
+                    l = (n // 2)
+                    cnt += c_index - l-k
+                else:
+                    l = 0
+                    while num[a_index+1+k+l] < x:
+                        l += 1
+                    cnt += c_index-k-k-a_index-l-1
                 #check.append([5, cnt])
             elif num[a_index+1+k] >= x and num[c_index-1-k] > y:
-                l = 0
-                while num[c_index-1-k-l] > y:
-                    l += 1
-                cnt += c_index-k-k-a_index-l-1
+                if num[n // 2] > y:
+                    l = (n // 2) - 1
+                    while num[l] > y:
+                        l -= 1
+                    cnt += l - a_index - k
+                elif num[n//2] == y:
+                    l = (n // 2)
+                    cnt += l - a_index - k
+                else:
+                    l = 0
+                    while num[c_index-1-k-l] > y:
+                        l += 1
+                    cnt += c_index-k-k-a_index-l-1
                 #check.append([6, cnt])
 
 print(cnt)
