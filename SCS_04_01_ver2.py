@@ -76,9 +76,28 @@ for i in range(0, n-2):  # a index 의 변화(가장 큰 index는 n-3까지다) 
             #check.append([3, cnt])
         else:  # 두 원소 다 만족하지 않는다면
             k = 0
-            # 일단 하나라도 만족할 때까지 감소 (최악의 경우 O(n/2) 까지 시간복잡도)
-            while num[a_index+1+k] < x and num[c_index-1-k] > y:
+            while num[a_index + 1 + k] < x and num[c_index-1-k] > y:
                 k += 1
+            # a_index = i
+            # c_index = j
+            # if num[n//2] < x:
+            #     k = 0
+            #     a_index = (n // 2)
+            #     # 일단 하나라도 만족할 때까지 감소 (최악의 경우 O(n/2) 까지 시간복잡도)
+            #     while num[a_index + 1 + k] < x and num[c_index-1-k] > y:
+            #         k += 1
+
+            # elif num[n//2] > y:
+            #     k = 0
+            #     c_index = (n//2)
+            #     while num[a_index+1+k] < x and num[c_index - 1 - k] > y:
+            #         k += 1
+
+            # else:
+            #     k = 0
+            #     # 일단 하나라도 만족할 때까지 감소 (최악의 경우 O(n/2) 까지 시간복잡도)
+            #     while num[a_index+1+k] < x and num[c_index-1-k] > y:
+            #         k += 1
 
             if num[a_index+1+k] >= x and num[c_index-1-k] <= y:  # 다시 위의 과정을 반복
                 cnt += c_index-a_index-1-k-k
