@@ -43,6 +43,7 @@ for i in range(0, n-2):  # a index 의 변화(가장 큰 index는 n-3까지다) 
                 # check.append([1, cnt])
             # a index 하나 뒤의 원소는 조건을 만족하지 않는데 c의 index 하나 밑의 원소는 조건을 만족하면
             elif num[a_index+1] < x and num[c_index-1] <= y:
+
                 if num[n//2] < x:  # 이분탐색을 활용해 중점 값 보다도 시작점이 크면
                     k = (n // 2) + 1  # 시작점 자체를 중점값 다음 index 로 옮김
                     while num[k] < x:  # 이를 통해 불필요한 반복을 줄일수있음
