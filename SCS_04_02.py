@@ -14,6 +14,7 @@ for i in range(1, n):  # candidate 리스트를 돌면서 전 리스트 요소�
     if candidate[i] != candidate[i-1]:
         check.append(i)  # O(1)
 check.append(n)  # 마지막에 리스트 길이만큼 append 함
+# print(check)
 
 for j in range(1, len(check)):  # O(len(check)) 만큼의 시간복잡도
     print1 = False  # -1을 출력해야하는지 체크하는 용도
