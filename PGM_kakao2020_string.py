@@ -1,4 +1,5 @@
 # 문자열 압축
+# string
 
 def solution(s):
     result = []
