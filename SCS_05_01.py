@@ -7,14 +7,14 @@ find1 = len(A) // 2
 for i in range(1, find1):
     if A[i] < A[i-1]:
         k = i
-        print(k)
+        print(len(A) - k)
         break
     else:
-        k = -1
+        k = 1e9
         pass
 
-if k == -1:
-    for j in range(find1, len(A)+1):
+if k == 1e9:
+    for j in range(find1, len(A)):
         if A[i] < A[i-1]:
             k = i
             print(k)
