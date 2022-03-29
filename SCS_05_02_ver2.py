@@ -6,6 +6,7 @@
 # 시간복잡도 O(n^2) 추정 (최악의 경우)
 
 import sys
+
 l, n, k = map(int, input().split())  # l, n, k 입력받음
 input = sys.stdin.readline
 stone = list(map(int, input().split()))  # stone 입력 받음
