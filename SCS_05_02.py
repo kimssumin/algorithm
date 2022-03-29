@@ -19,15 +19,24 @@ for kk in range(1, k+1):
         if dis[y] < min_dis:
             min_dis = dis[y]
             min_ind = y
+    #print(min_ind, min_dis)
 
-    new_dis = [0] * (n+1-kk)
-    for a in range(n+1-kk):
-        if a < y-1:
-            new_dis[a] = dis[a]
-        elif a == y-1:
-            new_dis[a] = dis[a+1] + dis[a]
-        else:
-            new_dis[a] = dis[a+1]
+    new_dis = [0] * (len(dis)-1)
+
+    if min_ind == 0:
+        for a in range(len(dis)-1):
+            if a == 0:
+                new_dis[a] = dis[a] + dis[a+1]
+            else:
+                new_dis[a] = dis[a+1]
+    else:
+        for a in range(len(dis)-1):
+            if a < min_ind-1:
+                new_dis[a] = dis[a]
+            elif a == min_ind-1:
+                new_dis[a] = dis[a] + dis[a+1]
+            else:
+                new_dis[a] = dis[a+1]
     dis = new_dis
     print(dis)
     result = min(dis)
