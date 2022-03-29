@@ -16,7 +16,7 @@ dis.append(l - stone[n-1])
 for kk in range(1, k+1):
     min_dis = 1e9
     for y in range(len(dis)):
-        if dis[y] < min_dis:
+        if dis[y] <= min_dis:
             min_dis = dis[y]
             min_ind = y
     #print(min_ind, min_dis)
