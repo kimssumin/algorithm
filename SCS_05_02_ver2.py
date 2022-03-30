@@ -27,6 +27,7 @@ while left <= right:  # 시간복잡도 : 최악의 경우 O(n)
 
         else:  # mid 보다 점프값이 길거나 같으면
             curr = i  # 현재위치를 이 돌로 옮기고
+
             if distance < min_dis:  # O(1)
                 min_dis = distance  # 그 mid 에서 최소값인지 확인
         if delete > k:
