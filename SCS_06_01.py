@@ -20,12 +20,12 @@ for _ in range(n):
 
 nomove = []
 
-while (len(drop) <= k):
+while (len(drop) < k):
     bump = []
     cnt = 0
     # print(locs)
 
-    print(locs)
+    # print(locs)
     new_locs = []
     new_jombie = [0] * (L+1)
 
@@ -154,7 +154,7 @@ while (len(drop) <= k):
                 drop2 = aa
             elif abs(aa) == abs(drop[-1]):
                 drop1 = aa
-        print(drop1, drop2)
+        #print(drop1, drop2)
 
         if drop2 > drop1:  # 먼저들어간게 크면
             first = drop2  # 서로 교환해야됨
