@@ -4,7 +4,10 @@
 
 n, L, k = map(int, input().split())
 jombie = [0] * (L+1)
+drop = []
 
 for _ in range(n):
     loc, id = map(int, input().split())
     jombie[loc] = id
+
+while (len(drop) == k):
