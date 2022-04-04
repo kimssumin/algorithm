@@ -2,12 +2,11 @@
 # -n부터 n까지의 정수 아이디를 가진 좀비 n명이 절벽으로 떨어지는 k 번째 좀비 찾기
 # greedy
 
-from collections import deque
 
 n, L, k = map(int, input().split())
 jombie = [0] * (L+1)
 drop = []
-locs = []  # deque 를 이용
+locs = []
 new_locs = []
 new_jombie = [0] * (L+1)
 idss = []
@@ -88,6 +87,45 @@ while (len(drop) < k):
 
                         #print(new_jombie, 2)
                         # pass
+                    elif i >= 1 and abs(locs[i] - locs[i-1]) == 1:
+
+                        change_index = locs[i-1]  # 13
+                        # print(change_index)
+                        if new_jombie[change_index + 1] != 0:
+                            new_jombie[change_index] = (-1) * \
+                                (new_jombie[change_index + 1])  # -5
+                            new_jombie[change_index + 1] = 0
+                        else:
+                            new_jombie[change_index] = (-1) * \
+                                (new_jombie[change_index - 1])  # -5
+                            new_jombie[change_index - 1] = 0
+
+                        # print(new_jombie[change_index])
+                        if new_jombie[change_index] < 0:
+                            # new_jombie[change_index -
+                            #            1] = new_jombie[change_index]
+                            # new_jombie[change_index] = 0
+                            ch = new_locs.index(change_index + 1)
+                            new_locs[ch] = change_index
+                            bh = bump.index(change_index + 1)
+                            bump[bh] = change_index
+                            #nomove.append(change_index - 1)
+
+                        else:
+                            # new_jombie[change_index +
+                            #            1] = new_jombie[change_index]
+                            # new_jombie[change_index] = 0
+                            ch = new_locs.index(change_index - 1)
+                            new_locs[ch] = change_index
+                            bh = bump.index(change_index + 1)
+                            bump[bh] = change_index
+                            #nomove.append(change_index + 1)
+                        # 위의 과정으로 앞에있던 겹친거 해결
+
+                        new_jombie[ll] = jombie[ll] * (-1)
+                        new_locs.append(ll)
+                        bump.append(ll)
+                        # nomove.append(ll)
 
                     else:
                         new_jombie[ll-1] = jombie[ll]  # 왼쪽으로 좀비 이동
@@ -163,14 +201,15 @@ while (len(drop) < k):
             drop[-1] = first  # 순서 바꿔 넣기
            # print(new_jombie, 8)
 
+    elif cnt == 1:
+        for a in idss:
+            if abs(a) == abs(drop[-1]):
+                drop[-1] = a
+
     locs = new_locs
     jombie = new_jombie
     #print("좀비상태 : ")
     # print(jombie)
     bump = []
-
-for a in idss:
-    if abs(a) == abs(drop[k-1]):
-        drop[k-1] = a
 
 print(drop[k-1])
