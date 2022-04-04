@@ -1,7 +1,8 @@
 # 좀비월드
 # -n부터 n까지의 정수 아이디를 가진 좀비 n명이 절벽으로 떨어지는 k 번째 좀비 찾기
-# greedy
 
+# greedy
+# 시간복잡도 최악의 경우 O(N^3)
 # 좀비가 존재하면 그 위치를 index로 하는 곳에 좀비의 방향값을 포함한 id를 value로 가지는 리스트를 순회하며 drop 리스트에 추가되는 좀비의 수가 k개가 될때까지 반복하도록 함
 
 n, L, k = map(int, input().split())  # n, l, k 입력
@@ -208,7 +209,7 @@ while (len(drop) < k):  # 절벽에 떨어지는 좀비의 수가 k 명 미만�
             drop[-1] = first  # 순서 바꿔 넣기
 
     elif cnt == 1:  # 떨어지는 횟수가 1번이라면
-        for a in idss:
+        for a in idss:  # O(N)
             if abs(a) == abs(drop[-1]):  # 원래의 id 값으로 drop 에 바꿔넣어줌 (부호)
                 drop[-1] = a
 
