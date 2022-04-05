@@ -111,7 +111,7 @@ while (len(drop) < k):  # 절벽에 떨어지는 좀비의 수가 k 명 미만�
                             # 양수 방향에 맞게 기존에 움직였던 것을 수정해야함 O(N)
                             ch = new_locs.index(change_index - 1)
                             new_locs[ch] = change_index
-                            bh = bump.index(change_index - 1)
+                            bh = bump.index(change_index - 1)  # O(N)
                             bump[bh] = change_index
 
                         new_jombie[ll] = jombie[ll] * \
@@ -173,15 +173,15 @@ while (len(drop) < k):  # 절벽에 떨어지는 좀비의 수가 k 명 미만�
                             new_jombie[change_index - 1] = 0
 
                         if new_jombie[change_index] < 0:
-                            ch = new_locs.index(change_index + 1)
+                            ch = new_locs.index(change_index + 1)  # O(N)
                             new_locs[ch] = change_index
-                            bh = bump.index(change_index + 1)
+                            bh = bump.index(change_index + 1)  # O(N)
                             bump[bh] = change_index
 
                         else:
-                            ch = new_locs.index(change_index - 1)
+                            ch = new_locs.index(change_index - 1)  # O(N)
                             new_locs[ch] = change_index
-                            bh = bump.index(change_index - 1)
+                            bh = bump.index(change_index - 1)  # O(N)
                             bump[bh] = change_index
 
                         new_jombie[ll] = jombie[ll] * (-1)
