@@ -26,6 +26,8 @@ def drop(x, y):  # drop 되는 순서를 결정
         else:
             return 0
 
+# id 가 양수이면 오른쪽 절벽끝과 현재 위치와의 거리를 정렬, id 가 음수이면 왼쪽 절벽끝과 현재 위치와의 거리를 정렬하면 좀비가 떨어질때까지 거리를 알수있음
+
 
 input = sys.stdin.readline
 n, l, k = map(int, input().split())
@@ -44,7 +46,7 @@ for _ in range(n):  # O(N)
 # 부딪히지 않는 경우, id 와 상관없이 좀비가 떨어지는 시간과 방향은 변함이 없음
 for i in range(n):  # O(N)
     if nobump[i][1] > 0:
-        nobump[i][0] = l - nobump[i][0]
+        nobump[i][0] = l - nobump[i][0]  # l 과 현재위치와의 거리
 
 # 떨어지는 순서를 고려하여 정렬 (drop 이라는 함수를 위에서 선언해, 떨어지는 조건을 충족하도록 함)
 nobump.sort(key=functools.cmp_to_key(drop))
