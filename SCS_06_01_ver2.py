@@ -13,7 +13,7 @@ from collections import deque
 
 
 def drop(x, y):  # drop 되는 순서를 결정
-  # 전부 O(1)의 시간
+    # 전부 O(1)의 시간
     if x[0] > y[0]:
         return 1
     elif x[0] < y[0]:
