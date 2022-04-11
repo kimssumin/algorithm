@@ -9,3 +9,6 @@ m = int(input())  # 중간 구멍의 수
 mm = list(map(int, input().split))  # 중간 구멍의 x 좌표
 l = int(input())  # 가장 아래 구멍의 수
 ll = list(map(int, input().split))  # 가장 아래 구멍의 x 좌표
+
+for m_i in mm:
+    check_m = 2 * (m_i)
