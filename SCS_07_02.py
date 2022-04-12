@@ -43,6 +43,7 @@ u_q(1, 0, 1)
 for i in arr_p:
     for j in range(1, 4):
         u_p(i + 1, j, q(i, j - 1))
+
 for i in arr_q:
     for j in range(1, 4):
         u_q(i + 1, j, q(i, j - 1))
