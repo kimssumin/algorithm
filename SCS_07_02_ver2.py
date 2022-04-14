@@ -7,50 +7,39 @@
 import sys
 
 
-class FenwickTree():
-    def __init__(self, N):
-        self.N = N
-        self.bit = [0 for i in range(N+1)]
-
-    def add(self, index, value):
-        index += 1
-        while index <= self.N:
-            self.bit[index] += value
-            index += (index & -index)
-
-    def prefixSum(self, index):
-        index += 1
-        ans = 0
-        while index != 0:
-            ans += self.bit[index]
-            index -= (index & -index)
-        return ans
+from sortedcontainers import SortedList
 
 
-class Solution:
-
+class Solution(object):
     def goodTriplets(self, nums1, nums2):
-        N = len(nums1)
-        fenwick1 = FenwickTree(N)
-        fenwick2 = FenwickTree(N)
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: int
+        """
+        pos = [0] * len(nums1)
+        for k, v in enumerate(nums2):
+            pos[v] = k
 
-        # re-index
-        indexes = {n: i for i, n in enumerate(nums1)}
-        nums2 = [indexes[n] for n in nums2]
+        pos_in_b, pre = SortedList([pos[nums1[0]]]), [0]
+        for n in nums1[1:]:
+            pos_in_b.add(pos[n])
+            pre.append(pos_in_b.bisect_left(pos[n]))
 
-        # count increasing triplets
-        ans = 0
-        for n in nums2:
-            if n > 0:
-                # count of increasing pairs with second number smaller then n
-                cnt = fenwick2.prefixSum(n-1)
-                ans += cnt
-                # fenwick1.prefixSum(n-1) give us count of numbers smaller than n before
-                fenwick2.add(n, fenwick1.prefixSum(n-1))
-            # add 1 to number n
-            fenwick1.add(n, 1)
-        print(ans)
-        return ans
+        nums1 = nums1[::-1]
+        nums2 = nums2[::-1]
+        for k, v in enumerate(nums2):
+            pos[v] = k
+        pos_in_b, suf = SortedList([pos[nums1[0]]]), [0]
+        for n in nums1[1:]:
+            pos_in_b.add(pos[n])
+            suf.append(pos_in_b.bisect_left(pos[n]))
+        suf = suf[::-1]
+
+        result = 0
+        for x, y in zip(pre, suf):
+            result += x*y
+        return result
 
 
 input = sys.stdin.readline

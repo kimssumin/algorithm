@@ -19,9 +19,9 @@ dp_q = [[0] * int(n + 2) for _ in range(4)]
 def q(p, k):
     s = 0
     while p:
-        if dp_p[k][p] == dp_q[k][p]:
-            s = (s + dp_p[k][p])
-            p -= (p & -p)
+        # if dp_p[k][p] == dp_q[k][p]:
+        s = (s + dp_p[k][p])
+        p -= (p & -p)
     return s
 
 
@@ -37,8 +37,8 @@ def u_q(p, k, v):
         p += (p & -p)
 
 
-u_p(1, 0, 1)
-u_q(1, 0, 1)
+#u_p(1, 0, 1)
+#u_q(1, 0, 1)
 
 for i in arr_p:
     for j in range(1, 4):
