@@ -3,7 +3,7 @@
 # P[i] < P[j] < P[k] 이면서 Q[i] < Q[j] < Q[k]인 인덱스 (i, j, k)가 존재
 # 유사도는 유사 트리플의 개수로 정의
 
-# BIT
+# BIT(fenwick tree)
 
 
 import sys
