@@ -3,7 +3,6 @@
 
 # 남왕국으로 자객의 탈출 - 장벽 세개 통과
 # 통로의 개수
-#
 
 from itertools import permutations, product
 
@@ -18,7 +17,7 @@ cnt = 0
 all_li = [uu, mm, ll]
 
 case_li = list(product(*all_li))
-# print(case_li)  # (all_li, 3)))
+print(len(case_li))  # (all_li, 3)))
 
 for i in case_li:
     if 2 * i[1] == i[0] + i[2]:
