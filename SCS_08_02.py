@@ -7,6 +7,7 @@ from itertools import count
 import sys
 input = sys.stdin.readline
 
+
 n, q = map(int, input().split())
 cost = list(map(int, input().split()))
 tree = [[] for _ in range(n+2)]
