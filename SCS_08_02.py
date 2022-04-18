@@ -71,4 +71,4 @@ for _ in range(q):
         v = int(do.split()[1])
         d = int(do.split()[2])
         update_fenwick_tree(tree, v, d)
-        cost[v] = d + cost[v]
+        cost[v] = d + cost[v]  # 비용 업데이트
