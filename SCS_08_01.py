@@ -1,4 +1,5 @@
 # 조상 확인하기
+
 # DFS(Depth First Search) 탐색을 하면서 preorder 순서와 postorder 순서를 정의할 수 있다
 # 현재 방문 노드의 자식 노드는 노드 번호의 오름차순 순서로 차례대로 방문한다고 가정한다
 
