@@ -66,7 +66,6 @@ for _ in range(q):
     if do.startswith('sub'):
         v = int(do.split()[1])
         query_fenwick_tree(tree, 1) - query_fenwick_tree()
-
     else:
         v = int(do.split()[1])
         d = int(do.split()[2])
