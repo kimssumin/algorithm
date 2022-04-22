@@ -34,7 +34,6 @@ def update_fenwick_tree(tree, index, value):
     while index < len(tree):
         tree[index] += value
         index += (index & -index)
-
     return tree
 
 
