@@ -21,6 +21,18 @@ level = [0] * (n + 1)  # 각 노드의 레벨
 # preorder 순으로 재배열될 cost_init 리스트, 모든 경우 젤 높은 루트노드는 1이므로 1일때의 cost를 먼저 넣어둠
 cost = [cost_init[0]]
 path_sum = [cost_init[0]]
+parents = [-1 for _ in range(n+2)]  # 부모 찾는 리스트
+
+
+def dfs(n):
+    for i in tree[n]:  # 최악의 경우 O(N-1)
+        if parents[i] == -1:
+            parents[i] = n
+            dfs(i)
+
+
+dfs(1)  # dfs(1) 실행을 통해 각 자식노드의 부모노드를 parents 리스트에 저장
+print(parents)
 
 
 def counts(x):  # 자식노드 수를 count 할 수 있는 함수
@@ -39,37 +51,51 @@ for i in range(1, n+1):  # 자식노드 카운트 하는 반복문
 
 
 cnts = [cnts_init[0]]  # 자식노드 순을 preorder tree 순으로 재배열
+diff = [path_sum[0]]  # diff 배열
 
 
 def dfs(x, l):  # preorder list 함수
     visited[x] = True
     level[x] = l
-    # global p_sum
-    p_sum = 5
-    for i in tree[x]:  # 시간복잡도 : O(tree[x]의 자식노드 수) -> 젤 최악의 경우에도 O(n)
-        p_sum += cost_init[i-1]
+    pa = 0
+    p_sum = cost_init[0]
 
+    if level[x] >= 2:
+        for a in range(level[x] - 1):
+            if a >= 1:
+                xx = x
+                xx = parents[xx]
+                p_sum += cost_init[parents[xx] - 1]
+            else:
+                p_sum += cost_init[parents[x] - 1]
+        path_sum[-1] += (p_sum - cost_init[0])
+        diff[-1] += (p_sum - cost_init[0])
+
+    p_sum = cost_init[0]
+
+    for i in tree[x]:  # 시간복잡도 : O(tree[x]의 자식노드 수) -> 젤 최악의 경우에도 O(n)
+        if i == 3:
+            print("here")
+            print(p_sum)
         if not visited[i]:
+            p_sum += cost_init[i-1]
             #parent[i] = x
             preorder.append(i)
             cost.append(cost_init[i-1])  # cost 작성 (preorder 순으로)
             cnts.append(cnts_init[i-1])  # 자식노드 갯수 count (preorder 순으로)
 
-            if level[i] >= 2:
-                print("in")
-                for a in range(level[i] - 1):
-                    p_sum += cost_init[preorder[-(a+1)] - 1]
             path_sum.append(p_sum)
-            p_sum = 5
+            diff.append(path_sum[-1] - path_sum[-2])
+            p_sum = cost_init[0]
 
             dfs(i, l+1)
 
 
 dfs(1, 0)  # preorder list 작성
-print(preorder)
+# print(preorder)
 # print(cost)
-print(path_sum)
-print(level)
+# print(path_sum)
+# print(diff)
 
 
 def LSB(k):  # k의 오른쪽에서 첫번째 1의 비트 위치가 d 번째라면 2^d return
@@ -124,3 +150,12 @@ for _ in range(q):  # 질의
         i = preorder.index(v)  # O(N)의 시간복잡도
         update(i, d)  # O(logN)
         cost[i] = d + cost[i]  # 비용 업데이트
+
+        # if cnts[-2] == 1 and level[preorder[-2]] == level[x]:
+        #     k = -3
+
+        #     while cnts[k] == 1 and level[preorder[k]] == level[x]:
+        #         k -= 1
+        #     p_sum += cost_init[preorder[((-1) * (a+1)) + (k+1)] - 1]
+        #     #k = -3
+        # else:
