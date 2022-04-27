@@ -3,6 +3,7 @@
 #dfs, fenwick
 
 import sys
+from unittest import result
 input = sys.stdin.readline
 
 
@@ -32,7 +33,6 @@ def dfs(n):
 
 
 dfs(1)  # dfs(1) 실행을 통해 각 자식노드의 부모노드를 parents 리스트에 저장
-print(parents)
 
 
 def counts(x):  # 자식노드 수를 count 할 수 있는 함수
@@ -74,9 +74,6 @@ def dfs(x, l):  # preorder list 함수
     p_sum = cost_init[0]
 
     for i in tree[x]:  # 시간복잡도 : O(tree[x]의 자식노드 수) -> 젤 최악의 경우에도 O(n)
-        if i == 3:
-            print("here")
-            print(p_sum)
         if not visited[i]:
             p_sum += cost_init[i-1]
             #parent[i] = x
@@ -102,32 +99,39 @@ def LSB(k):  # k의 오른쪽에서 첫번째 1의 비트 위치가 d 번째라�
     return k & -k
 
 
-T_cost = []  # BIT 트리 작성
-for a in range(len(cost)):
+T_diff = []  # BIT 트리 작성
+for a in range(len(diff)):
     if a % 2 == 0:  # index number 기준 짝수일때 (bit tree 기준 홀수일때)
-        T_cost.append(cost[a])  # 자기 자신 하나만 저장
+        T_diff.append(diff[a])  # 자기 자신 하나만 저장
     else:
         cc = 0
         for k in range(a, a - LSB(a+1), -1):  # O(LSB(a+1))만큼의 시간복잡도
-            cc += cost[k]
-        T_cost.append(cc)
-# print(T_cost)
+            cc += diff[k]
+        T_diff.append(cc)
+# print(T_diff)
 
 
 def prefix_sum(k):  # prefix_sum 의 수행시간은 O(logN)
     s = 0
     while k >= 1:
-        s += T_cost[k-1]
+        s += T_diff[k-1]
         k = k - LSB(k)
     return s
 
 
-# print(prefix_sum(7))  # cost[6]까지의 합
+# print("prefix")
+# print(prefix_sum(4))  # diff[4]까지의 합
 
 
-def update(k, x):  # T_cost[k]를 x+T_cost[k]로 change
+def update(k, x):  # T_diff[k]를 x+T_diff[k]로 change
     while k <= n:  # (O(logN))
-        T_cost[k] = T_cost[k] + x
+        T_diff[k] = T_diff[k] + x
+        k = k + LSB(k+1)  # O(1)
+
+
+def update_minus(k, x):  # T_diff[k]를 T_diff[k] - x로 change
+    while k < n:  # (O(logN))
+        T_diff[k] = T_diff[k] - x
         k = k + LSB(k+1)  # O(1)
 
 
@@ -137,19 +141,23 @@ for _ in range(q):  # 질의
     #v = int(v)
     if do.startswith('sum'):  # subtree 질의가 들어온다면
         v = int(do.split()[1])
-        if v == 1:  # 1인 경우 전체 노드의 합을 구하는 것이므로
-            result_sub = prefix_sum(n)  # O(logN)
-            print(result_sub)
+        i = preorder.index(v)  # O(N)의 시간복잡도
+
+        if i == 0:
+            result_sub = T_diff[0]
         else:
-            i = preorder.index(v)  # O(N)의 시간복잡도
-            result_sub = prefix_sum(i + cnts[i]) - prefix_sum(i)  # O(logN)
-            print(result_sub)
+            result_sub = prefix_sum(i+1)
+        print(result_sub)
+
     else:
         v = int(do.split()[1])
         d = int(do.split()[2])
-        i = preorder.index(v)  # O(N)의 시간복잡도
-        update(i, d)  # O(logN)
-        cost[i] = d + cost[i]  # 비용 업데이트
+        k = preorder.index(v)  # O(N)의 시간복잡도
+        s = cnts[k]
+        update(k, d)  # O(logN)
+        # print(k+s)
+        update_minus(k+s, d)
+        # cost[k] = d + cost[k]  # 비용 업데이트
 
         # if cnts[-2] == 1 and level[preorder[-2]] == level[x]:
         #     k = -3
