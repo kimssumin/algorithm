@@ -3,7 +3,6 @@
 #dfs, fenwick
 
 import sys
-from unittest import result
 input = sys.stdin.readline
 
 
@@ -143,10 +142,7 @@ for _ in range(q):  # 질의
         v = int(do.split()[1])
         i = preorder.index(v)  # O(N)의 시간복잡도
 
-        if i == 0:
-            result_sub = T_diff[0]
-        else:
-            result_sub = prefix_sum(i+1)
+        result_sub = prefix_sum(i+1)
         print(result_sub)
 
     else:
