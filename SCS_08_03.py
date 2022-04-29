@@ -1,5 +1,7 @@
 # 경로 합 질의
 
+
+# 최악의 경우에도 O(n ^ 2/2)보단 적은 시간복잡도
 #dfs, fenwick
 
 import sys
@@ -11,7 +13,7 @@ n, q = map(int, input().split())
 cost_init = list(map(int, input().split()))
 cnts_init = []  # 자식노드 수를 count 할 리스트 -> 이 또한 추후에 preorder 순으로 재배열됨
 tree = [[] for _ in range(n+2)]
-for _ in range(n-1):
+for _ in range(n-1):  # O(n)
     p, c = map(int, input().split())
     tree[p].append(c)
 
@@ -60,7 +62,7 @@ def dfs(x, l):  # preorder list 함수
     p_sum = cost_init[0]
 
     if level[x] >= 2:
-        for a in range(level[x] - 1):
+        for a in range(level[x] - 1):  # O(level 수 만큼 (자식노드의 깊이만큼)) -> 최악의 경우에도 O(N)
             if a >= 1:
                 xx = x
                 xx = parents[xx]
@@ -87,7 +89,7 @@ def dfs(x, l):  # preorder list 함수
             dfs(i, l+1)
 
 
-dfs(1, 0)  # preorder list 작성
+dfs(1, 0)  # preorder list 작성 O(N)
 # print(preorder)
 # print(cost)
 # print(path_sum)
@@ -99,7 +101,7 @@ def LSB(k):  # k의 오른쪽에서 첫번째 1의 비트 위치가 d 번째라�
 
 
 T_diff = []  # BIT 트리 작성
-for a in range(len(diff)):
+for a in range(len(diff)):  # O(n) 시간복잡도
     if a % 2 == 0:  # index number 기준 짝수일때 (bit tree 기준 홀수일때)
         T_diff.append(diff[a])  # 자기 자신 하나만 저장
     else:
@@ -142,7 +144,7 @@ for _ in range(q):  # 질의
         v = int(do.split()[1])
         i = preorder.index(v)  # O(N)의 시간복잡도
 
-        result_sub = prefix_sum(i+1)
+        result_sub = prefix_sum(i+1)  # O(logn)
         print(result_sub)
 
     else:
@@ -152,7 +154,8 @@ for _ in range(q):  # 질의
         s = cnts[k]
         update(k, d)  # O(logN)
         # print(k+s)
-        update_minus(k+s, d)
+        update_minus(k+s, d)  # O(logN)
+
         # cost[k] = d + cost[k]  # 비용 업데이트
 
         # if cnts[-2] == 1 and level[preorder[-2]] == level[x]:
