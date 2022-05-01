@@ -53,7 +53,7 @@ for _ in range(q):  # 질의
     # 서로 같은 조상이 나오기 바로 전까지 반복 후 u,v 둘 중 하나의 노드의 조상이 lca 가 되돍
     print(u)
 
-
+# 일반적인 dfs 코드
 # import sys
 # input = sys.stdin.readline
 # sys.setrecursionlimit(10**5)
