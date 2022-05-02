@@ -6,6 +6,8 @@ import math
 from collections import deque  # deque 이용
 
 n, q = map(int, sys.stdin.readline().split())
+
+
 # log2를 취해서 2^k 번쨰 조상을 최대 몇번 갈수있는지 -> 최악의 경우에도 루트노드로 갈수있음
 logn = int(math.log2(n)) + 1
 graph = [[] for _ in range(n+1)]
