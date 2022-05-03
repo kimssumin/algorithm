@@ -1,4 +1,5 @@
 # DP 이용
+# deque
 #시간복잡도 : O(nlogn) + O(qlogn)
 
 import sys
