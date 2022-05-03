@@ -90,10 +90,6 @@ def dfs(x, l):  # preorder list 함수
 
 
 dfs(1, 0)  # preorder list 작성 O(N)
-# print(preorder)
-# print(cost)
-# print(path_sum)
-# print(diff)
 
 
 def LSB(k):  # k의 오른쪽에서 첫번째 1의 비트 위치가 d 번째라면 2^d return
