@@ -3,6 +3,8 @@
 # DFS(Depth First Search) 탐색을 하면서 preorder 순서와 postorder 순서를 정의할 수 있다
 # 현재 방문 노드의 자식 노드는 노드 번호의 오름차순 순서로 차례대로 방문한다고 가정한다
 
+
+# fenwick 풀이방법 : preorder 에서 u의 index < v의 index, postorder에서 u의 index > v의 index 조건 동시 만족
 # dfs
 # 시간복잡도 제일 최악의 경우 모든 질의에서 조상 노드까지 검색해야 하는 경우 (O(Q * (N-1))
 
