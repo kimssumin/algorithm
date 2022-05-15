@@ -1,3 +1,6 @@
+#땅따먹기
+#
+
 n, k = map(int, input().split())
 ground = []
 dp = [[0] * n for _ in range(n)]
