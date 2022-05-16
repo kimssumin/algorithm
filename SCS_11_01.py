@@ -1,5 +1,5 @@
 #땅따먹기
-#
+#dp
 
 n, k = map(int, input().split())
 ground = []
