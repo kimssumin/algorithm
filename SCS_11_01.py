@@ -1,6 +1,6 @@
 # 땅따먹기
 
-# d
+# 이익많게
 # dp
 
 n, k = map(int, input().split())
