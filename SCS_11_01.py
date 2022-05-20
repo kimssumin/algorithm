@@ -24,5 +24,5 @@ else:
             if j == 2:
                 stack.append(dp[i][j])
             else:
-                if stack[-1] <= dp[i][j] - dp[i][j-3]:
+                if stack[-1] < dp[i][j] - dp[i][j-3]:
                     stack.append(dp[i][j] - dp[i][j-3])
