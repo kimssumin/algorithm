@@ -18,4 +18,4 @@ if k > (n // 3) * n:
 else:
     for i in range(n):
         for j in range(3, n):
-            dp[i][j] = max(dp[i][j-1])
+            dp[i][j] = max(dp[i][j-1] + )
