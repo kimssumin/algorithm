@@ -11,7 +11,7 @@ n, k = map(int, input().split())
 ground = []
 for i in range(n):
     ground.append(list(map(int, input().split())))
-
+# 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 if k > (n // 3) * n:
     print(-1)
 else:
@@ -31,6 +31,7 @@ else:
     end = len(ans)
     answer = 0
     for _ in range(k):
-        end -= 1
-        answer += ans[end]
+        if end != 0:  # 여기서 runtime error 가 없어진 걸 보면 end == 0인게 있다 -> 예외설정제대로 못했다
+            end -= 1
+            answer += ans[end]
     print(answer)
