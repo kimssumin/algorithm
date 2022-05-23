@@ -15,7 +15,7 @@ for i in range(n):
 if k > (n // 3) * n:
     print(-1)
 
-# elif n >= 6:
+# elif n >= 6: # 한행에 두개 들어가는..
 #     cnt = n // 3
 #     for i in ground:
 #         start = 0
