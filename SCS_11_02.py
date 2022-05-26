@@ -1,4 +1,5 @@
-# 선물고르기
+# 선물고르기 
+#value, price
 #O(nlogn)의 시간복잡도
 
 n = int(input())
