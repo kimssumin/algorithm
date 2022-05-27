@@ -2,6 +2,8 @@
 #value, price
 #O(nlogn)의 시간복잡도
 
+#dp로 풀어야됨..
+
 n = int(input())
 value = list(map(int, input().split()))
 cost = list(map(int, input().split()))
