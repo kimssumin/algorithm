@@ -16,6 +16,8 @@ for i in range(n):
 
 if k > (n // 3) * n:  # 타일을 놓을 수 있는 최대 갯수보다 k 가 큰 경우 다 놓을 수 없으므로 -1 출력
     print(-1)
+
+    #
 else:
     # O(n ^2)의 시간복잡도
     for i in ground:
