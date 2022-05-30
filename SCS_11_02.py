@@ -1,8 +1,8 @@
-# 선물고르기 
+# 선물고르기
 #value, price
-#O(nlogn)의 시간복잡도
+# O(nlogn)의 시간복잡도
 
-#dp로 풀어야됨..
+# dp로 풀어야됨..!
 
 n = int(input())
 value = list(map(int, input().split()))
@@ -23,6 +23,6 @@ for i in range(1, len(value)):  # O(n)
         cnt += 1
 
 if cnt == len(value) - 1:  # 최대차이가 최소가 되도록 선택할 상품이 여러개인 경우
-  print(value[-1])
+    print(value[-1])
 else:
-  print(value[max_i])
+    print(value[max_i])
