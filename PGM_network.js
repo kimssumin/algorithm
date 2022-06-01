@@ -1,3 +1,5 @@
+//dfs
+
 function solution(n, computers) {
     let visited = [false];
     let answer = 0;
