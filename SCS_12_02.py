@@ -1,4 +1,6 @@
 # 최선과 차선
+
+# 2번째
 # dijkstra algorithm
 
 import sys
