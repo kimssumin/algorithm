@@ -1,6 +1,6 @@
 # 최선과 차선
 
-# 2번째
+# 2번째 차선책의 합
 # dijkstra algorithm
 
 import sys
