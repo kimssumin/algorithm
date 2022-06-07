@@ -12,7 +12,6 @@ m = int(input())
 
 inf = sys.maxsize
 dp = [[inf]*2 for _ in range(n+1)]
-dp_fi = [[inf]*1 for _ in range(n+1)]
 graph = [[]for _ in range(n+1)]
 heap = []
 
@@ -30,19 +29,6 @@ def dij_2nd(start):
                 heapq.heappush(heap, [n_w, n_n])
 
 
-def dij_1st(start):
-    heapq.heappush(heap, [0, start])
-    dp_fi[start][0] = 0
-    while heap:
-        a, b = heapq.heappop(heap)
-        for n_n, wei in graph[b]:
-            n_w = wei+a
-            if n_w < dp_fi[n_n][0]:
-                dp_fi[n_n][0] = n_w
-                dp_fi[n_n].sort()
-                heapq.heappush(heap, [n_w, n_n])
-
-
 for _ in range(m):
     u, v, w = map(int, input().split())
     graph[u].append([v, w])
@@ -50,21 +36,16 @@ for _ in range(m):
 sum = 0
 
 dij_2nd(0)
-dij_1st(0)
+# dij_1st(0)
 # print(dp)
 
 for i in range(1, n):
     if dp[i][1] == inf:
         #print(str(i)+"번째 : -1")
         continue
-    if dp_fi[i][0] == inf:
-        continue
-    else:
-        if dp_fi[i][0] == dp[i][1]:
-            print('same')
 
-        else:
-            sum += (dp[i][1])
+    else:
+        sum += (dp[i][1])
         #print(str(i)+"번째 :" + str(dp[i][1]))
 
 print(sum)
