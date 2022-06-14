@@ -1,4 +1,5 @@
 # BOJ 16930 유사
+# bfs
 
 from collections import deque
 
