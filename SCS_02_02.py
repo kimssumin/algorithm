@@ -2,7 +2,6 @@
 # push, pop 연산은 모두 O(1) 시간에 동작, max 연산은 평균적으로 O(1) 시간에 동작
 # 스택 최대 2개 사용해 구현 가능
 
-# UTF-8 encoding when using korean
 
 class MaxStack:  # Max값을 찾기위한 클래스 정의
     def __init__(self):
