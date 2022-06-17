@@ -19,7 +19,7 @@ check.append(n)  # 마지막에 리스트 길이만큼 append 함
 for j in range(1, len(check)):  # O(len(check)) 만큼의 시간복잡도
     print1 = False  # -1을 출력해야하는지 체크하는 용도
     if check[j] - check[j-1] < standard:  # check 리스트의 요소들간의 차이가 득표수인데
-        print1 = True  # 마지막까지도 True 이면 -1 cnffur
+        print1 = True  # 마지막까지도 True 이면 -1 출력
         pass  # 이것이 과반수보다 작다면 패스
     else:
         print(candidate[check[j]-1])  # check[j]는 과반수후보자 다음 후보자 인덱스이므로 -1해줘야함
