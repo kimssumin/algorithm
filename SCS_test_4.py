@@ -1,4 +1,5 @@
 '''
+#solve sol
 def solve(A, k, n): # k x n product-price table, k products and n days
     total = [[float('Inf') for _ in range(n)] for _ in range(1<<k)]
     # total[S][d] = d일까지 부분집합 S에 속한 물건을 조건에 맞게 사는 데 필요한 최소 금액
