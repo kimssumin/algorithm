@@ -1,3 +1,4 @@
+//lotto
 function solution(lottos, win_nums) {
   const answer = [];
   let win_counter = 0;
