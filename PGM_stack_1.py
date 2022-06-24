@@ -10,20 +10,13 @@ def solution(progresses, speeds):
         else:
             day = (100 - progresses[pro]) // speeds[pro] + 1
             daylist.append(day)
-    ans = 1
-    print(daylist)
-    for i in range(1, len(daylist)):
-        maxx = daylist[0]
-        if daylist[i] <= daylist[i-1]:
-            ans += 1
-            if i == len(daylist) - 1:
-                answer.append(ans)
-        else:
-            answer.append(ans)
-            ans = 1
-            maxx = daylist[i]
-            if i == len(daylist) - 1:
-                answer.append(ans)
+    ans = 0
+    for i in range(len(daylist)):
+        if daylist[ans] < daylist[i]:      # 현재 인덱스의 작업일보다 큰 작업일이 나오면
+            answer.append(i - ans)    # 둘의 차이(배포 개수)를 추가
+            ans = i                   # 현재 인덱스를 갱신
+
+    answer.append(len(daylist) - ans)    # 갱신된 인덱스부터 마지막 인덱스까지의 개수
 
     return answer
 
