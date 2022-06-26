@@ -7,7 +7,7 @@ def solution(bridge_length, weight, truck_weights):
     trucks_on_bridge = [0] * bridge_length
     trucks_on_bridge = deque(trucks_on_bridge)
     truck_weights = deque(truck_weights)
-    while len(trucks_on_bridge):
+    while len(truck_weights) or len(trucks_on_bridge) > 0:
         answer += 1
         trucks_on_bridge.popleft()
         if truck_weights:
