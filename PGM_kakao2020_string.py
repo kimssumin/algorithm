@@ -6,9 +6,12 @@ def solution(s):
     ans = 0
 
     length = len(s)
+    if length == 1:
+        return 1
+
     for l in range(1, length):
         answer = ""
-        #l : 자르는 단위개수
+        # l : 자르는 단위개수
         if length % l == 0:
             cut = length // l
         else:
@@ -33,11 +36,11 @@ def solution(s):
                     answer += save
                     save = s[start:end]
                     cnt = 1
-                #print(answer)
+                # print(answer)
         result.append(len(answer))
         prints.append(answer)
 
-    #print(prints)
+    # print(prints)
     ans = min(result)
 
     return ans
