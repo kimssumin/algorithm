@@ -32,6 +32,10 @@ def solution(rows, columns, queries):
             table_correct[s_r-1][kk+1] = table[s_r-1][kk]
             table_correct[e_r-1][kk-1] = table[e_r-1][kk]
         table = table_correct
+        print(lists)
         answer.append(min(lists))
 
     return answer
+
+
+print(solution(6, 6, [[2, 2, 5, 4], [3, 3, 6, 6], [5, 1, 6, 3]]))
