@@ -11,3 +11,4 @@ def solution(N, stages):
         else:
             result[stage] = 0
     return sorted(result, key=lambda x: result[x], reverse=True)
+# sort lambda
