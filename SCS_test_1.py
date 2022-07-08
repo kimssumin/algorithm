@@ -1,4 +1,4 @@
-''' 정답 코드
+# 정답 코드
 n = int(input())
 A = [int(x) for x in input().split()]
 
@@ -8,4 +8,3 @@ for i in range(n):
     if m > A[i] + A[2*n-i-1]:
         m = A[i] + A[2*n-i-1]
 print(m)
-'''
