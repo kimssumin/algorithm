@@ -1,4 +1,4 @@
-'''
+
 #solve sol
 def solve(A, k, n): # k x n product-price table, k products and n days
     total = [[float('Inf') for _ in range(n)] for _ in range(1<<k)]
@@ -19,4 +19,4 @@ def solve(A, k, n): # k x n product-price table, k products and n days
 k, n = [int(x) for x in input().split()]
 A = [[int(x) for x in input().split()] for _ in range(k)]
 print(solve(A, k, n))
-'''
+
