@@ -1,3 +1,5 @@
+# prefix sum
+
 
 def sum(a, b, c, d):
     w = S[c][d]
