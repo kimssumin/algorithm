@@ -1,4 +1,6 @@
 # [1차] 뉴스클러스터링
+# string
+
 from math import floor
 
 
