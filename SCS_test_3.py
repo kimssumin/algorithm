@@ -1,5 +1,5 @@
 # prefix sum
-# real solution
+# real-solution
 
 def sum(a, b, c, d):
     w = S[c][d]

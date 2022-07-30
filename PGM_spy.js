@@ -1,3 +1,4 @@
+// 옷 가짓수
 const cloth = {};
 function solution(clothes) {
     var answer = 1
