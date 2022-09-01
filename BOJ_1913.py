@@ -1,6 +1,8 @@
 # 구현
 # 달팽이
+import sys
 
+input = sys.stdin.readline
 N = int(input())
 destination = int(input())
 
