@@ -1,6 +1,7 @@
 # brute force
 # 십자가 찾기
 
+# 출력은 잘되는데 채점만 하면 index error 뜸..왜?
 import sys
 input = sys.stdin.readline
 
@@ -53,8 +54,8 @@ answer = False
 for i in range(1, n):
     for j in range(1, m):
         if (board[i][j] == '*') and (check(i, j) == True):
-            answer = True 
-            for x in check_s(i, j): 
+            answer = True
+            for x in check_s(i, j):
                 ans_list = [i+1, j+1, x]
                 ans.append(ans_list)
 
