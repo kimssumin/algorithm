@@ -1,5 +1,7 @@
 # 캠프준비
 # bruteforce
+
+#combination 이용 fin
 from itertools import combinations
 
 n, l, r, x = map(int, input().split())
