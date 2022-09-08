@@ -7,8 +7,6 @@ u = list(map(int, input().split()))
 d = list(map(int, input().split()))
 
 for _ in range(t):
-    # Step 1
-    # 위에서 가장 오른쪽에 있는 숫자를 따로 temp값에 저장해놓습니다.
     temp = u[n - 1]
 
     # Step 2
