@@ -1,5 +1,6 @@
 # 격자안에서 밀고당기기
 # simulation
+# 컨베이어벨트 2개
 
 # 변수 선언 및 입력
 n, t = tuple(map(int, input().split()))
