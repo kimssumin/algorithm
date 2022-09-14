@@ -1,3 +1,6 @@
+# 1차원 바람
+
+
 n, m, q = map(int, input().split())
 city = []
 wind = []
