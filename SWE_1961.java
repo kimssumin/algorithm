@@ -28,8 +28,8 @@ public class SWE_1961 {
 				}
 			}
 
-            System.out.println("#" + test_case);
-            for(int i = 0; i < N; i++) {
+			System.out.println("#" + test_case);
+			for(int i = 0; i < N; i++) {
 				for(int j = 0; j < N; j++) {
 					System.out.print(arr[N-j-1][i]);
 				}
