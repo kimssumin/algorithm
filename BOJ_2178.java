@@ -5,58 +5,73 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class BOJ_2178 {
-    static int N,M;
-    static int[][] board;
-    static int[][] visit;
-    static int[] dx = {-1, 0, 1, 0};
-    static int[] dy = {0, 1, 0, -1}; //상우하좌
+	
+	static int N, M;
+	static int [][] map;
+	static int [][] distance;
+	static int min;
+	static int [] dx = {-1, 0, 1, 0};
+	static int [] dy = {0, 1, 0, -1}; //상우하좌
+	
+	static class Point{
+		int r;
+		int c;
+		public Point(int r, int c) {
+			this.r = r;
+			this.c = c;
+		}
+	}
+	
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String[] input = br.readLine().split(" ");
+		N = Integer.parseInt(input[0]);
+		M = Integer.parseInt(input[1]);
+		
+		map = new int[N][M];
+		distance = new int[N][M];
+		
+		for (int i = 0; i < N; i++) {
+			String[] inputStr = br.readLine().split("");
+			for(int j = 0; j < M; j++) {
+				map[i][j] = Integer.parseInt(inputStr[j]);
+			}
+		}
+		
+		bfs();
+		br.close(); 
+	}
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String[] nm = br.readLine().split(" ");
-        N = Integer.parseInt(nm[0]);
-        M = Integer.parseInt(nm[1]);
-        board = new int[N][M];
-        visit = new int[N][M];
-        for (int i = 0; i < N; i++) {
-            String[] inputStr = br.readLine().split("");
-            for (int j = 0; j < M ; j++) {
-                board[i][j] = Integer.parseInt(inputStr[j]);
-            }
-        }
-
-        bfs();
-        System.out.println(visit[N-1][M-1]);
-
-        br.close();
-    }
-
-    private static void bfs() {
-        Queue<int[]> queue = new LinkedList<>();
-        queue.offer(new int[] {0, 0});
-        visit[0][0] = 1;
-        
-        //queue가 비지않았으면
-        while(!queue.isEmpty()){
-            int[] cur = queue.poll();
-            int x = cur[0];
-            int y = cur[1];
-            if (x==N-1 && y == M-1) return;
-
-            //4방 탐색
-            for (int i = 0; i < 4; i++){
-                int nx = x + dx[i];
-                int ny = y + dy[i];
-                if (!check(nx, ny)) continue;
-                if (board[nx][ny] == 1 && visit[nx][ny] == 0){
-                    queue.offer(new int[] {nx, ny});
-                    visit[nx][ny] = visit[x][y] + 1;
-                }
-            }
-        }
-    }
-
-    private static boolean check(int nx, int ny) {
-        return nx >= 0 && nx < N && ny >= 0 && ny < M;
-    }
+	private static void bfs() {
+		Queue<Point> points = new LinkedList<>();
+		points.offer(new Point(0,0));
+		distance[0][0] = 1;
+		while(!points.isEmpty()) {
+			Point cur = points.poll();
+			int r = cur.r;
+			int c = cur.c;
+			if (r == N-1 && c == M-1) {
+				min = distance[N-1][M-1];
+				System.out.println(min);
+				return;
+			}
+			for (int i = 0; i < 4; i++) {
+				int nx = r + dx[i];
+				int ny = c + dy[i];
+				if (!check(nx, ny)) {
+					continue;
+				}
+				if (map[nx][ny] == 1 && distance[nx][ny] == 0) {
+					points.offer(new Point(nx, ny));
+					distance[nx][ny] = distance[r][c] + 1;
+				}
+			}
+		}
+		 
+	}
+	
+	static boolean check(int r, int c) {
+		return r >= 0 && r < N && c >= 0 && c < M;
+	}
 }
