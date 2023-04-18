@@ -1,0 +1,53 @@
+import java.util.*;
+
+class Solution {
+    int N;
+    List<Integer> nl= new ArrayList<>();
+    int[] areaLst ; 
+    public double[] solution(int k, int[][] ranges) {
+        double[] answer = new double[ranges.length];
+        nl.add(k);
+        collatz(k);
+        N = nl.size();
+        
+        double[] areaLst = new double[N];
+        for(int i = 1; i < N; i++){
+            int start = i-1;
+            int end = i;
+            
+            int h1 = nl.get(start);
+            int h2 = nl.get(end);
+            double area = (h1 + h2) * (end - start) * 0.5;
+            areaLst[i] = areaLst[i-1] + area;
+        }
+       // System.out.println(Arrays.toString(areaLst));
+        
+        for(int i = 0; i < ranges.length; i++){
+            int start = ranges[i][0];
+            int end = N - 1 + ranges[i][1];
+            
+            if (start > end){
+                answer[i] = -1;
+                continue;
+            }
+            double area = areaLst[end] - areaLst[start];
+            answer[i] = area;
+        }
+        return answer;
+    }
+    
+    private void collatz(int k){
+        if (k == 1){
+            return;
+        }
+        if (k % 2 ==0){
+            nl.add(k/2);
+            collatz(k/2);
+        }
+        else{
+            nl.add(k*3 + 1);
+            collatz(k*3 + 1);
+        }
+        
+    }
+}
