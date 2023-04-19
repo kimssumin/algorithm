@@ -1,0 +1,53 @@
+import java.util.*;
+
+class Solution {
+    
+    class Food implements Comparable<Food>{
+        int idx, time;
+        public Food(int idx, int time){
+            this.idx = idx;
+            this.time = time;
+        }
+        
+        public int compareTo(Food o1){
+            return Integer.compare(this.time, o1.time);
+        }
+        
+        public String toString(){
+            return "Time :"+this.time + " , Idx : "+this.idx;
+        }
+    }
+    
+    public int solution(int[] food_times, long k) {
+        int answer = 0;
+        PriorityQueue<Food> pq = new PriorityQueue<>();
+        long sum = 0;
+        for(int i = 0; i < food_times.length ; i++){
+            pq.add(new Food(i+1, food_times[i]));
+            sum += food_times[i];
+        }
+        if (sum <= k){
+            return -1;
+        }
+        
+        long time = 0;
+        long leftFood = food_times.length;
+        long prev = 0;
+        while(time + ((pq.peek().time - prev) * leftFood) <= k){
+            int nt = pq.poll().time;
+            time += (((nt - prev) * leftFood));
+            leftFood -= 1;
+            prev = nt;
+        }
+        
+        ArrayList<Food> ans = new ArrayList<>(pq);
+        Collections.sort(ans,new Comparator<Food>(){
+            public int compare(Food o1, Food o2){
+                return Integer.compare(o1.idx, o2.idx);
+            }});
+        int rot = (int)((k - time) % leftFood);
+        answer = ans.get(rot).idx; //몇번돌았나
+        
+        return answer;
+    }
+}
