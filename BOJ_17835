@@ -1,0 +1,88 @@
+package javaAlgo;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.PriorityQueue;
+
+public class BOJ_17835 {
+    static int N, M, K;
+    static class Node implements Comparable<Node>{
+        int end;
+        long dist;
+
+        public Node(int end, long dist) {
+            this.end = end;
+            this.dist = dist;
+        }
+
+
+        @Override
+        public int compareTo(Node o) {
+            return Long.compare(this.dist, o.dist);
+        }
+    }
+    static List<Node>[] city;
+    static long [] dist;
+    static PriorityQueue<Node> pq;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] nmk = br.readLine().split(" ");
+        N = Integer.parseInt(nmk[0]);
+        M = Integer.parseInt(nmk[1]);
+        K = Integer.parseInt(nmk[2]);
+
+        city = new List[N+1];
+        for(int i = 0; i < N+1; i++){
+            city[i] = new ArrayList<>();
+        }
+        dist = new long[N+1];
+        Arrays.fill(dist, Long.MAX_VALUE);
+        for(int i = 0; i < M; i++){
+            String[] inputStr = br.readLine().split(" ");
+            city[Integer.parseInt(inputStr[1])].add(new Node(Integer.parseInt(inputStr[0]), Long.parseLong(inputStr[2])));
+
+        }
+
+        String[] kk = br.readLine().split(" ");
+        for(int i = 0; i < K; i++){
+            int dest = Integer.parseInt(kk[i]);
+            dist[dest] = 0;
+            pq = new PriorityQueue<>();
+            pq.add(new Node(dest, 0));
+            dijkstra();
+//            System.out.println(Arrays.toString(dist));
+        }
+
+//        System.out.println(Arrays.toString(dist));
+        long ans = 0;
+        int ans_idx = 0;
+        for(int i = 1; i < N+1; i++){
+            if (dist[i] > ans){
+                ans = dist[i];
+                ans_idx = i;
+            }
+        }
+        System.out.println(ans_idx);
+        System.out.print(ans);
+        br.close();
+    }
+
+    private static void dijkstra() {
+        while(!pq.isEmpty()){
+            Node now = pq.poll();
+            int start = now.end;
+            if (dist[start] < now.dist) continue;
+            for(Node next : city[start]){
+                long nextDist = dist[now.end] + next.dist;
+                if (dist[next.end] > nextDist){
+                    dist[next.end] = nextDist;
+                    pq.add(new Node(next.end, nextDist));
+                }
+            }
+        }
+    }
+}
